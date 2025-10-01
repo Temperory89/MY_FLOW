@@ -8,6 +8,10 @@ import { Table } from '../ui/Table';
 import { Select } from '../ui/Select';
 import { Checkbox } from '../ui/Checkbox';
 import { CustomFunction } from '../ui/CustomFunction';
+import { ModalComponent } from '../ui/Modal';
+import { Tabs } from '../ui/Tabs';
+import { Form } from '../ui/Form';
+import { DatePicker } from '../ui/DatePicker';
 
 interface RenderComponentProps {
   component: ComponentData;
@@ -63,6 +67,18 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({
     
     case 'customfunction':
       return <CustomFunction {...componentProps} />;
+
+    case 'modal':
+      return <ModalComponent {...componentProps} />;
+
+    case 'tabs':
+      return <Tabs {...componentProps} />;
+
+    case 'form':
+      return <Form {...componentProps} />;
+
+    case 'datepicker':
+      return <DatePicker {...componentProps} />;
 
     default:
       return (

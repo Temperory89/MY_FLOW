@@ -28,18 +28,22 @@ export interface ComponentDefinition {
 export interface PropertySchema {
   key: string;
   label: string;
-  type: 'text' | 'number' | 'boolean' | 'select' | 'color' | 'textarea' | 'code' | 'url' | 'regex';
+  type: 'text' | 'number' | 'boolean' | 'select' | 'color' | 'textarea' | 'code' | 'url' | 'regex' | 'expression' | 'json' | 'action';
   options?: string[];
   defaultValue?: any;
+  category?: 'General' | 'Style' | 'Events' | 'Data' | 'Advanced';
+  helperText?: string;
+  visibleIf?: string;
   validation?: {
     required?: boolean;
     min?: number;
     max?: number;
     pattern?: string;
+    custom?: string;
   };
 }
 
-export type ComponentType = 
+export type ComponentType =
   | 'button'
   | 'input'
   | 'text'
@@ -57,6 +61,7 @@ export type ComponentType =
   | 'container'
   | 'modal'
   | 'tabs'
+  | 'form'
   | 'customfunction';
 
 export type ComponentCategory = 'basic' | 'form' | 'data' | 'layout' | 'advanced' | 'custom';
@@ -346,4 +351,28 @@ export interface AppSettings {
   rtl: boolean;
   animations: boolean;
   debugMode: boolean;
+}
+
+export interface PropMeta {
+  key: string;
+  label: string;
+  type: 'string' | 'number' | 'boolean' | 'enum' | 'expression' | 'color' | 'json' | 'action';
+  default?: any;
+  category?: 'General' | 'Style' | 'Events' | 'Data';
+  helperText?: string;
+  visibleIf?: string;
+  validation?: {
+    required?: boolean;
+    pattern?: string;
+    custom?: string;
+  };
+}
+
+export interface HistoryEntry {
+  id: string;
+  timestamp: number;
+  action: 'add' | 'update' | 'delete' | 'move' | 'resize';
+  componentId?: string;
+  before?: any;
+  after?: any;
 }

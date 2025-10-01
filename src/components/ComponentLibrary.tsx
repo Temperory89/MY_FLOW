@@ -238,6 +238,106 @@ const componentDefinitions: ComponentDefinition[] = [
       { key: 'javascript', label: 'JavaScript', type: 'code', defaultValue: '' },
       { key: 'height', label: 'Height', type: 'number', defaultValue: 200 }
     ]
+  },
+  {
+    type: 'modal',
+    name: 'Modal',
+    icon: 'Square',
+    defaultProps: {
+      isOpen: false,
+      title: 'Modal Title',
+      content: 'Modal content goes here',
+      size: 'md',
+      showCloseButton: true,
+      closeOnOverlayClick: true,
+      closeOnEscape: true,
+      visible: true
+    },
+    defaultStyle: {},
+    defaultSize: { width: 400, height: 300 },
+    category: 'layout',
+    propertySchema: [
+      { key: 'title', label: 'Title', type: 'text', defaultValue: 'Modal Title' },
+      { key: 'content', label: 'Content', type: 'textarea', defaultValue: 'Modal content' },
+      { key: 'size', label: 'Size', type: 'select', options: ['sm', 'md', 'lg', 'xl', 'full'], defaultValue: 'md' },
+      { key: 'isOpen', label: 'Open by Default', type: 'boolean', defaultValue: false }
+    ]
+  },
+  {
+    type: 'tabs',
+    name: 'Tabs',
+    icon: 'Layout',
+    defaultProps: {
+      tabs: [
+        { id: 'tab1', label: 'Tab 1', content: 'Content for tab 1' },
+        { id: 'tab2', label: 'Tab 2', content: 'Content for tab 2' },
+        { id: 'tab3', label: 'Tab 3', content: 'Content for tab 3' }
+      ],
+      defaultTab: 'tab1',
+      variant: 'line',
+      position: 'top',
+      alignment: 'start',
+      visible: true
+    },
+    defaultStyle: { border: '1px solid #E5E7EB', borderRadius: '6px' },
+    defaultSize: { width: 500, height: 300 },
+    category: 'layout',
+    propertySchema: [
+      { key: 'variant', label: 'Variant', type: 'select', options: ['line', 'enclosed', 'pills'], defaultValue: 'line' },
+      { key: 'alignment', label: 'Alignment', type: 'select', options: ['start', 'center', 'end', 'stretch'], defaultValue: 'start' }
+    ]
+  },
+  {
+    type: 'form',
+    name: 'Form',
+    icon: 'FileText',
+    defaultProps: {
+      title: 'Contact Form',
+      description: 'Please fill out the form below',
+      fields: [
+        { id: 'name', name: 'name', label: 'Name', type: 'text', required: true, placeholder: 'Enter your name' },
+        { id: 'email', name: 'email', label: 'Email', type: 'email', required: true, placeholder: 'Enter your email' },
+        { id: 'message', name: 'message', label: 'Message', type: 'textarea', required: true, placeholder: 'Enter your message' }
+      ],
+      submitLabel: 'Submit',
+      resetLabel: 'Reset',
+      showResetButton: true,
+      resetOnSuccess: true,
+      visible: true
+    },
+    defaultStyle: { border: '1px solid #E5E7EB', borderRadius: '6px' },
+    defaultSize: { width: 500, height: 400 },
+    category: 'form',
+    propertySchema: [
+      { key: 'title', label: 'Title', type: 'text', defaultValue: 'Contact Form' },
+      { key: 'description', label: 'Description', type: 'textarea', defaultValue: '' },
+      { key: 'submitLabel', label: 'Submit Label', type: 'text', defaultValue: 'Submit' }
+    ]
+  },
+  {
+    type: 'datepicker',
+    name: 'Date Picker',
+    icon: 'Calendar',
+    defaultProps: {
+      label: 'Select Date',
+      placeholder: 'Choose a date...',
+      value: null,
+      format: 'MM/DD/YYYY',
+      required: false,
+      disabled: false,
+      visible: true,
+      showTodayButton: true
+    },
+    defaultStyle: {},
+    defaultSize: { width: 250, height: 70 },
+    category: 'form',
+    propertySchema: [
+      { key: 'label', label: 'Label', type: 'text', defaultValue: 'Select Date' },
+      { key: 'placeholder', label: 'Placeholder', type: 'text', defaultValue: 'Choose a date...' },
+      { key: 'format', label: 'Format', type: 'select', options: ['MM/DD/YYYY', 'DD/MM/YYYY', 'YYYY-MM-DD'], defaultValue: 'MM/DD/YYYY' },
+      { key: 'required', label: 'Required', type: 'boolean', defaultValue: false },
+      { key: 'disabled', label: 'Disabled', type: 'boolean', defaultValue: false }
+    ]
   }
 ];
 
@@ -288,6 +388,7 @@ export const ComponentLibrary: React.FC = () => {
     { id: 'basic', name: 'Basic', count: componentDefinitions.filter(d => d.category === 'basic').length },
     { id: 'form', name: 'Form', count: componentDefinitions.filter(d => d.category === 'form').length },
     { id: 'data', name: 'Data', count: componentDefinitions.filter(d => d.category === 'data').length },
+    { id: 'layout', name: 'Layout', count: componentDefinitions.filter(d => d.category === 'layout').length },
     { id: 'custom', name: 'Custom', count: componentDefinitions.filter(d => d.category === 'custom').length }
   ];
 

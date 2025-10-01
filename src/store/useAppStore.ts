@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { ComponentData, ComponentType, ApiEndpoint, SqlQuery, Datasource, AppPage, GlobalState, CodeGeneration, AppSettings, Theme } from '../types';
+import { historyManager } from '../engine/HistoryManager';
 
 const defaultTheme: Theme = {
   id: 'default',
